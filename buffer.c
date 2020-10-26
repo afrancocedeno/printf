@@ -1,4 +1,7 @@
 #include "holberton.h"
+/**
+ *
+ */
 /*-----TAKE TO BUFFER.c*/
 char *buffer(char c, char *string)
 {
