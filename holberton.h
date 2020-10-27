@@ -15,24 +15,21 @@
 struct formats
 {
 	char *format_specifier;
-	char *(*get_substring)(va_list);
+	char *(*get_substring)(va_list, char *);
 };
-/*typedef*/
 typedef struct formats formats;
 /*prototypes*/
 int _printf(const char *format, ...);
-unsigned int print(char *str);
-int validate_directive(formats *formatos, char *directive_string,
-		       int *flag_number);
-char *analyse_code(char *directive_string, formats *formatos,
-		   va_list pa, int *directive_length);
-char *printPercentage(va_list __attribute__((unused)) pa);
-char *printIntenger(va_list pa);
-char *printString(va_list pa);
-char *printChar(va_list pa);
-char *sub_string_buffer(char *sub_string, char *string);
-char *buffer(char c, char *string);
-int numberLength(int n);
-char *numberToString(char *s, int n, int length, int signo);
 unsigned int get_string_length(char *str);
+char *numberToString(char *s, int n, int length, int signo);
+int numberLength(int n);
+char *buffer(char c, char *string);
+char *sub_string_buffer(char *sub_string, char *string);
+char *printChar(va_list pa, char *sub_string);
+char *printString(va_list pa, char *sub_string);
+char *printIntenger(va_list pa, char *sub_string);
+char *printPercentage(va_list __attribute__((unused)) pa, char *sub_string);
+char *analyse_code(char directive_string, formats *formatos,
+		   va_list pa, char *sub_string);
+unsigned int print(char *str);
 #endif

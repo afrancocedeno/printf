@@ -23,34 +23,34 @@ unsigned int print(char *str)
  */
 int _printf(const char *format, ...)
 {
-	va_list pa;
-	char *string = "", *sub_string = "";
-	unsigned int i = 0, string_length = 0;
-	int j, flag_number = 5, directive_length = 0;
-	formats formatos[6] = {{"c", printChar}, {"s", printString},
-			       {"d", printIntenger}, {"i", printIntenger},
-			       {"%", printPercentage}, {NULL, NULL}};
-	char directive_string[6];
+	va_list pa;        /*list of arguments*/
+	char *string = ""; /*string for final result*/
+	char *sub_string = NULL;
+	unsigned int i = 0;             /*loops iterators*/
+	unsigned int string_length = 0; /*final lenght of string*/
+	formats formatos[6] = {{"%", printPercentage},
+			       {"c", printChar},
+			       {"s", printString},
+			       {"d", printIntenger},
+			       {"i", printIntenger},
+			       {NULL, NULL}}; /*formats*/
 
+	sub_string = malloc(sizeof(char) * 1024);
+	if (sub_string == NULL)
+		exit(20);
+	for (; i < 1025; i++)
+		sub_string[i] = '\0';
 	va_start(pa, format); /*fill list of parameters*/
+	/*go through string*/
+	i = 0;
 	while (*(format + i))
 	{
 		if (format[i] == '%')
 		{
-			for (j = 0; j < flag_number; j++)
-			{
-				if (format[(i + 1) + j] != '\0')
-					directive_string[j] = format[(i + 1) + j];
-				else
-					directive_string[j] = '\0';
-			}
-			directive_string[j] = '\0';
-			directive_length = validate_directive(formatos,
-							      directive_string, &flag_number);
-			sub_string = analyse_code(directive_string, formatos,
-						  pa, &directive_length);
+			sub_string = analyse_code(format[i + 1], formatos, pa, sub_string);
 			string = sub_string_buffer(sub_string, string);
-			i += 2 + directive_length; /*2 represents acutal % position*/
+			
+			i += 2;
 			continue;
 		}
 		else
@@ -61,5 +61,6 @@ int _printf(const char *format, ...)
 	va_end(pa);            /*kill list*/
 	if (string[0] != '\0') /*kill string*/
 		free(string);
+	free(sub_string);
 	return (string_length);
 }

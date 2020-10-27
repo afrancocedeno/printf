@@ -3,50 +3,62 @@
 /**
  * printChar - pull char from argmument
  * @pa: variadic function argument
+ * @sub_string: return buffer
  *
  * Return: new string of char
  */
-char *printChar(va_list pa)
+char *printChar(va_list pa, char *sub_string)
 {
 	char c_char;
-	char *c_string = NULL;
 	int c_num = va_arg(pa, int);
 
 	if (c_num < 0 || c_num > 127)
 		exit(5);
 	c_char = c_num;
-	c_string = malloc(sizeof(*c_string) * 2);
-	if (c_string == NULL)
-		exit(1);
-	c_string[0] = c_char;
-	c_string[1] = '\0';
-	return (c_string);
+	sub_string[0] = c_char;
+	return (sub_string);
 }
 /**
  * printString - pull string from argmument
  * @pa: variadic function argument
+ * @sub_string: return buffer
  *
  * Return: new string
  */
-char *printString(va_list pa)
+char *printString(va_list pa, char *sub_string)
 {
 	char *string = va_arg(pa, char *);
+	int i = 0;
 
 	if (string == NULL)
-		return ("(null)");
-	return (string);
+	{
+		sub_string[0] = '(';
+		sub_string[1] = 'n';
+		sub_string[2] = 'u';
+		sub_string[3] = 'l';
+		sub_string[4] = 'l';
+		sub_string[5] = ')';
+		return (sub_string);
+	}
+	while (*(string + i))
+	{
+		sub_string[i] = string[i];
+		i++;
+	}
+
+	return (sub_string);
 }
 /**
  * printIntenger - pull int from argmument
  * @pa: variadic function argument
+ * @sub_string: return buffer
  *
  * Return: new string of int
  */
-char *printIntenger(va_list pa)
+char *printIntenger(va_list pa, char *sub_string)
 {
-	char *num_string = NULL;
 	int num = va_arg(pa, int);
-	int num_length = 0, signo = 0, i = 0;
+	int num_length = 0, signo = 0;
 
 	if (num < 0)
 	{
@@ -56,21 +68,19 @@ char *printIntenger(va_list pa)
 	}
 	else
 		num_length = numberLength(num);
-	num_string = malloc(sizeof(*num_string) * num_length + 1);
-	if (num_string == NULL)
-		exit(1);
-	for (; i <= num_length; i++)
-		num_string[i] = '\0';
-	num_string = numberToString(num_string, num, num_length, signo);
-	return (num_string);
+	sub_string = numberToString(sub_string, num, num_length, signo);
+	return (sub_string);
 }
 /**
  * printPercentage - return percentage
  * @pa: unused argmument
+ * @sub_string: return buffer
  *
  * Return: string percetage
  */
-char *printPercentage(va_list __attribute__((unused)) pa)
+char *printPercentage(va_list __attribute__((unused)) pa, char *sub_string)
 {
-	return ("%");
+	sub_string[0] = '%';
+
+	return (sub_string);
 }

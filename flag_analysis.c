@@ -5,49 +5,25 @@
  * @directive_string: code of format
  * @formatos: all the code formats
  * @pa: list of arguments
- * @directive_length: length of code
+ * @sub_string: return buffer
  *
  * Return: string percetage
  */
-char *analyse_code(char *directive_string, formats *formatos,
-		   va_list pa, int *directive_length)
+char *analyse_code(char directive_string, formats *formatos,
+		   va_list pa, char *sub_string)
 {
 	int i = 0;
 
 	while (formatos[i].format_specifier)
 	{
-		if (directive_string[*directive_length] == formatos[i].format_specifier[0])
-			return (formatos[i].get_substring(pa));
-		i++;
-	}
-	exit(1);
-}
-/**
- * validate_directive - validate code directive
- * @directive_string: code of format
- * @formatos: all the code formats
- * @flag_number: number of possible flags
- *
- * Return: string percetage
- */
-int validate_directive(formats *formatos, char *directive_string,
-		       int *flag_number)
-{
-	int length = 0, i = 0, j = 0;
-	/*i < maximun number of flags*/
-	while (i < *flag_number)
-	{
-		while (formatos[i].format_specifier)
+		if (directive_string == formatos[i].format_specifier[0])
 		{
-			if (directive_string[i] == formatos[i].format_specifier[j])
-			{
-				return (length);
-			}
-			j++;
+			sub_string = formatos[i].get_substring(pa, sub_string);
+			return (sub_string);
 		}
 		i++;
-		length++;
 	}
-	/*if not format found*/
-	exit(1);
+	sub_string[0] = '%';
+	sub_string[1] = directive_string;
+	return (sub_string);
 }

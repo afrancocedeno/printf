@@ -54,7 +54,7 @@ char *sub_string_buffer(char *sub_string, char *string)
 	{
 		if (string_length > 1)
 			free(string);
-		exit(1);
+		exit(2);
 	}
 	/*string to new_str*/
 	for (; i < string_length; i++)
