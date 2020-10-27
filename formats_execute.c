@@ -57,14 +57,15 @@ char *printString(va_list pa, char *sub_string)
  */
 char *printIntenger(va_list pa, char *sub_string)
 {
-	int num = va_arg(pa, int);
-	int num_length = 0, signo = 0;
+	long int num = va_arg(pa, int);
+	long int num_length = 0;
+	int signo = 0;
 
 	if (num < 0)
 	{
 		signo = 1;
-		num *= -1;
-		num_length = numberLength(num) + 1;
+		num = -num;
+		num_length = numberLength(num);
 	}
 	else
 		num_length = numberLength(num);

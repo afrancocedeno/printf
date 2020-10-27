@@ -21,8 +21,8 @@ typedef struct formats formats;
 /*prototypes*/
 int _printf(const char *format, ...);
 unsigned int get_string_length(char *str);
-char *numberToString(char *s, int n, int length, int signo);
-int numberLength(int n);
+char *numberToString(char *s, long int n, long int length, int signo);
+long int numberLength(long int n);
 char *buffer(char c, char *string);
 char *sub_string_buffer(char *sub_string, char *string);
 char *reset_sub_buffer(char *sub_string, unsigned int buffer_size);
