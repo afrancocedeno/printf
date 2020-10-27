@@ -20,7 +20,7 @@ char *analyse_code(char *directive_string, formats *formatos,
 			return (formatos[i].get_substring(pa));
 		i++;
 	}
-	return ("%k");
+	exit (1);
 }
 /**
  * validate_directive - validate code directive
