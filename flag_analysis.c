@@ -5,12 +5,12 @@
  * @directive_string: code of format
  * @formatos: all the code formats
  * @pa: list of arguments
- * @directive_length: length of code
  * @sub_string: return buffer
  *
  * Return: string percetage
  */
-char *analyse_code(char directive_string, formats *formatos, va_list pa, char *sub_string)
+char *analyse_code(char directive_string, formats *formatos,
+		   va_list pa, char *sub_string)
 {
 	int i = 0;
 
