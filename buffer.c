@@ -67,3 +67,19 @@ char *sub_string_buffer(char *sub_string, char *string)
 		free(string);
 	return (new_str);
 }
+
+/**
+ * reset_sub_buffer - fill string with \0
+ * @sub_string: string to fill
+ * @buffer_size: size of string
+ *
+ * Return: new string
+ */
+char *reset_sub_buffer(char *sub_string, unsigned int buffer_size)
+{
+	unsigned int i = 0;
+
+	for (; i <= buffer_size + 1; i++)
+		sub_string[i] = '\0';
+	return (sub_string);
+}
