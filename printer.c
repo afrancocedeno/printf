@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 		sub_string[i] = '\0';
 	va_start(pa, format); /*fill list of parameters*/
 	if ((format[0] == '%' && format[1] == '\0') || !format)
-		return (-1);
+		return (0);
 	i = 0;
 	while (*(format + i))
 	{
