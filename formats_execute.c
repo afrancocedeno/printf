@@ -17,7 +17,7 @@ char *printChar(va_list pa)
 	c_char = c_num;
 	c_string = malloc(sizeof(*c_string) * 2);
 	if (c_string == NULL)
-		exit(6);
+		return(1);
 	c_string[0] = c_char;
 	c_string[1] = '\0';
 	return (c_string);
@@ -58,7 +58,7 @@ char *printIntenger(va_list pa)
 		num_length = numberLength(num);
 	num_string = malloc(sizeof(*num_string) * num_length + 1);
 	if (num_string == NULL)
-		exit(1);
+		return(1);
 	for (; i <= num_length; i++)
 		num_string[i] = '\0';
 	num_string = numberToString(num_string, num, num_length, signo);
