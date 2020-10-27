@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 {
 	va_list pa;        /*list of arguments*/
 	char *string = ""; /*string for final result*/
-	char *sub_string = NULL;
+	char *sub_string = "";
 	unsigned int i = 0; /*loops iterators*/
 	unsigned int buffer_size = 1024;
 	unsigned int string_length = 0; /*final lenght of string*/
@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 	sub_string = malloc(sizeof(char) * buffer_size);
 	if (sub_string == NULL)
 		exit(20);
-	for (; i <= buffer_size; i++)
+	for (; i < buffer_size; i++)
 		sub_string[i] = '\0';
 	va_start(pa, format); /*fill list of parameters*/
 	/*go through string*/
