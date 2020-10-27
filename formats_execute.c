@@ -85,6 +85,5 @@ char *printIntenger(va_list pa, char *sub_string)
 char *printPercentage(va_list __attribute__((unused)) pa, char *sub_string)
 {
 	sub_string[0] = '%';
-
 	return (sub_string);
 }
