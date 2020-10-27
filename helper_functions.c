@@ -35,8 +35,6 @@ char *numberToString(char *s, int n, int length, int signo)
 	}
 	if (signo && length == 0)
 		s[0] = '-';
-	else
-		s[0] = (n % 10) + '0';
 	return (s);
 }
 
