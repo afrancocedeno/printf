@@ -15,6 +15,7 @@ unsigned int print(char *str)
 	return (string_length);
 }
 
+
 /**
  * _printf - print string according to format
  * @format: string to be printed with arguments
@@ -25,23 +26,22 @@ int _printf(const char *format, ...)
 {
 	va_list pa;        /*list of arguments*/
 	char *string = ""; /*string for final result*/
-	char *sub_string = "";
+	char *sub_string = NULL;
 	unsigned int i = 0; /*loops iterators*/
 	unsigned int buffer_size = 1024;
-	unsigned int string_length = 0; /*final lenght of string*/
-	formats formatos[6] = {{"%", printPercentage},
-			       {"c", printChar},
-			       {"s", printString},
-			       {"d", printIntenger},
-			       {"i", printIntenger},
-			       {NULL, NULL}}; /*formats*/
+	unsigned int string_length = 0;
+	formats formatos[6] = {{"%", printPercentage}, {"c", printChar},
+			       {"s", printString}, {"d", printIntenger},
+			       {"i", printIntenger}, {NULL, NULL}};
+
 	sub_string = malloc(sizeof(char) * buffer_size);
 	if (sub_string == NULL)
 		exit(20);
 	for (; i < buffer_size; i++)
 		sub_string[i] = '\0';
 	va_start(pa, format); /*fill list of parameters*/
-	/*go through string*/
+	if ((format[0] == '%' && format[1] == '\0') || format[0] == '\0')
+		return (-1);
 	i = 0;
 	while (*(format + i))
 	{
