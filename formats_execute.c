@@ -18,6 +18,7 @@ char *printChar(va_list pa, char *sub_string)
 	sub_string[0] = c_char;
 	return (sub_string);
 }
+
 /**
  * printString - pull string from argmument
  * @pa: variadic function argument
