@@ -30,7 +30,6 @@ char *printChar(va_list pa, char *sub_string);
 char *printString(va_list pa, char *sub_string);
 char *printIntenger(va_list pa, char *sub_string);
 char *printPercentage(va_list __attribute__((unused)) pa, char *sub_string);
-char *analyse_code(char directive_string, formats *formatos,
-		   va_list pa, char *sub_string);
+char *analyse_code(char directive_string, formats *formatos, va_list pa, char *sub_string);
 unsigned int print(char *str);
 #endif
