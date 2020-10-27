@@ -79,7 +79,7 @@ char *reset_sub_buffer(char *sub_string, unsigned int buffer_size)
 {
 	unsigned int i = 0;
 
-	for (; i < buffer_size + 1; i++)
+	for (; i < buffer_size; i++)
 		sub_string[i] = '\0';
 	return (sub_string);
 }

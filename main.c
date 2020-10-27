@@ -4,6 +4,6 @@
 /*----TAKE TO MAIN.c*/
 int main()
 {
-	_printf("Ho%%la %c", 'A');
+	_printf("Hola %s", "bebé");
 	return (0);
 }
