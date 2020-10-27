@@ -20,7 +20,7 @@ char *buffer(char c, char *string)
 	{
 		if (string_length > 1)
 			free(string);
-		exit(1);
+		return(1);
 	}
 	/*str to new_str*/
 	for (; i < string_length; i++)
@@ -54,7 +54,7 @@ char *sub_string_buffer(char *sub_string, char *string)
 	{
 		if (string_length > 1)
 			free(string);
-		exit(2);
+		return(1);
 	}
 	/*string to new_str*/
 	for (; i < string_length; i++)
