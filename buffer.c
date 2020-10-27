@@ -1,8 +1,12 @@
 #include "holberton.h"
+
 /**
+ * buffer - push char and return new string
+ * @c: char to push
+ * @string: string to add char
  *
+ * Return: new string
  */
-/*-----TAKE TO BUFFER.c*/
 char *buffer(char c, char *string)
 {
 	char *new_str = NULL;
@@ -18,7 +22,6 @@ char *buffer(char c, char *string)
 			free(string);
 		exit(1);
 	}
-
 	/*str to new_str*/
 	for (; i < string_length; i++)
 		new_str[i] = string[i];
@@ -29,7 +32,13 @@ char *buffer(char c, char *string)
 		free(string);
 	return (new_str);
 }
-
+/**
+ * sub_string_buffer - push string and return new string
+ * @sub_string: string to push
+ * @string: string to add sub_string
+ *
+ * Return: new string
+ */
 char *sub_string_buffer(char *sub_string, char *string)
 {
 	char *new_str = NULL;
@@ -47,12 +56,11 @@ char *sub_string_buffer(char *sub_string, char *string)
 			free(string);
 		exit(2);
 	}
-
 	/*string to new_str*/
 	for (; i < string_length; i++)
 		new_str[i] = string[i];
 	/*sub_string to new_str*/
-	for (j = 0; i + j < new_string_length; j++)
+	for (j = 0; i + j < new_string_length - 1; j++)
 		new_str[i + j] = sub_string[j];
 	new_str[i + j] = '\0';
 	if (string[0] != '\0') /*kill string*/

@@ -1,5 +1,11 @@
 #include "holberton.h"
-/*----TAKE TO FORMATS_EXECUTE.c*/
+
+/**
+ * printChar - pull char from argmument
+ * @pa: variadic function argument
+ *
+ * Return: new string of char
+ */
 char *printChar(va_list pa)
 {
 	char c_char;
@@ -16,6 +22,12 @@ char *printChar(va_list pa)
 	c_string[1] = '\0';
 	return (c_string);
 }
+/**
+ * printString - pull string from argmument
+ * @pa: variadic function argument
+ *
+ * Return: new string
+ */
 char *printString(va_list pa)
 {
 	char *string = va_arg(pa, char *);
@@ -24,11 +36,18 @@ char *printString(va_list pa)
 		return ("(null)");
 	return (string);
 }
+/**
+ * printIntenger - pull int from argmument
+ * @pa: variadic function argument
+ *
+ * Return: new string of int
+ */
 char *printIntenger(va_list pa)
 {
 	char *num_string = NULL;
 	int num = va_arg(pa, int);
-	int num_length = 0, signo = 0;
+	int num_length = 0, signo = 0, i = 0;
+
 	if (num < 0)
 	{
 		signo = 1;
@@ -40,11 +59,17 @@ char *printIntenger(va_list pa)
 	num_string = malloc(sizeof(*num_string) * num_length + 1);
 	if (num_string == NULL)
 		exit(1);
-	num_string = numberToString(num_string, num, num_length);
-	if (signo)
-		num_string[0] = '-';
+	for (; i <= num_length; i++)
+		num_string[i] = '\0';
+	num_string = numberToString(num_string, num, num_length, signo);
 	return (num_string);
 }
+/**
+ * printPercentage - return percentage
+ * @pa: unused argmument
+ *
+ * Return: string percetage
+ */
 char *printPercentage(va_list __attribute__((unused)) pa)
 {
 	return ("%");

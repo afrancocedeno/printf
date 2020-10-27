@@ -1,8 +1,15 @@
 #include "holberton.h"
-/*---- TAKE TO HELPER_FUNCTIONS.c*/
+
+/**
+ * get_string_length - return string length
+ * @str: string
+ *
+ * Return: length of string whitout null
+ */
 unsigned int get_string_length(char *str)
 {
 	unsigned int length = 0;
+
 	while (*(str + length))
 		length++;
 	return (length);
@@ -13,19 +20,23 @@ unsigned int get_string_length(char *str)
  * @s: pointer to memory blocks to allocate number
  * @n: number to be stored as a string
  * @length: digits of the number
+ * @signo: 1 if its negative, 0 if its not
  *
  * Return: number as a string
  */
-char *numberToString(char *s, int n, int length)
+char *numberToString(char *s, int n, int length, int signo)
 {
-	int initial_length = length;
-	while (length >= 0)
+
+	while (length > 0)
 	{
 		s[length - 1] = (n % 10) + '0';
 		n /= 10;
 		length--;
 	}
-	s[initial_length] = '\0';
+	if (signo && length == 0)
+		s[0] = '-';
+	else
+		s[0] = (n % 10) + '0';
 	return (s);
 }
 
@@ -44,6 +55,5 @@ int numberLength(int n)
 		n /= 10;
 		c++;
 	}
-
 	return (c);
 }
