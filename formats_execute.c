@@ -46,7 +46,6 @@ char *printString(va_list pa, char *sub_string)
 		sub_string[i] = string[i];
 		i++;
 	}
-
 	return (sub_string);
 }
 
