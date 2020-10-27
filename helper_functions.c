@@ -20,6 +20,7 @@ unsigned int get_string_length(char *str)
  * @s: pointer to memory blocks to allocate number
  * @n: number to be stored as a string
  * @length: digits of the number
+ * @signo: sign of the number
  *
  * Return: number as a string
  */

@@ -40,7 +40,7 @@ int _printf(const char *format, ...)
 	for (; i < buffer_size; i++)
 		sub_string[i] = '\0';
 	va_start(pa, format); /*fill list of parameters*/
-	if ((format[0] == '%' && format[1] == '\0') || format[0] == '\0')
+	if ((format[0] == '%' && format[1] == '\0') || !format)
 		return (-1);
 	i = 0;
 	while (*(format + i))
