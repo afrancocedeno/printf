@@ -20,7 +20,7 @@ char *analyse_code(char *directive_string, formats *formatos,
 			return (formatos[i].get_substring(pa));
 		i++;
 	}
-	exit(3);
+	return(1);
 }
 /**
  * validate_directive - validate code directive
@@ -49,5 +49,5 @@ int validate_directive(formats *formatos, char *directive_string,
 		length++;
 	}
 	/*if not format found*/
-	exit(4);
+	return(1);
 }
