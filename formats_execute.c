@@ -18,6 +18,7 @@ char *printChar(va_list pa, char *sub_string)
 	sub_string[0] = c_char;
 	return (sub_string);
 }
+
 /**
  * printString - pull string from argmument
  * @pa: variadic function argument
@@ -45,9 +46,9 @@ char *printString(va_list pa, char *sub_string)
 		sub_string[i] = string[i];
 		i++;
 	}
-
 	return (sub_string);
 }
+
 /**
  * printIntenger - pull int from argmument
  * @pa: variadic function argument
@@ -72,6 +73,7 @@ char *printIntenger(va_list pa, char *sub_string)
 	sub_string = numberToString(sub_string, num, num_length, signo);
 	return (sub_string);
 }
+
 /**
  * printPercentage - return percentage
  * @pa: unused argmument
@@ -82,6 +84,5 @@ char *printIntenger(va_list pa, char *sub_string)
 char *printPercentage(va_list __attribute__((unused)) pa, char *sub_string)
 {
 	sub_string[0] = '%';
-
 	return (sub_string);
 }

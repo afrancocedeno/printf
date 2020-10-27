@@ -15,7 +15,6 @@ unsigned int print(char *str)
 	return (string_length);
 }
 
-
 /**
  * _printf - print string according to format
  * @format: string to be printed with arguments
