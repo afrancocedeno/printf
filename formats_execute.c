@@ -49,6 +49,7 @@ char *printString(va_list pa, char *sub_string)
 
 	return (sub_string);
 }
+
 /**
  * printIntenger - pull int from argmument
  * @pa: variadic function argument
