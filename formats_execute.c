@@ -74,6 +74,7 @@ char *printIntenger(va_list pa, char *sub_string)
 	sub_string = numberToString(sub_string, num, num_length, signo);
 	return (sub_string);
 }
+
 /**
  * printPercentage - return percentage
  * @pa: unused argmument
