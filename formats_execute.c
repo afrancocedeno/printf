@@ -86,3 +86,26 @@ char *printPercentage(va_list __attribute__((unused)) pa, char *sub_string)
 	sub_string[0] = '%';
 	return (sub_string);
 }
+/**
+ * printBinary - pull int from argmument
+ * @pa: variadic function argument
+ * @sub_string: return buffer
+ *
+ * Return: new string of binary
+ */
+char *printBinary(va_list pa, char *sub_string)
+{
+	int a[10], n, i, j;
+
+	n = va_arg(pa, int);
+	for (i = 0; n > 0; i++)
+	{
+		a[i] = n % 2;
+		n = n / 2;
+	}
+	for (i = i - 1, j = 0; i >= 0; i--, j++)
+	{
+		sub_string[j] = a[i] + '0';
+	}
+	return (sub_string);
+}

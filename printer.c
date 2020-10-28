@@ -29,9 +29,9 @@ int _printf(const char *format, ...)
 	unsigned int i = 0; /*loops iterators*/
 	unsigned int buffer_size = 1024;
 	unsigned int string_length = 0;
-	formats formatos[6] = {{"%", printPercentage}, {"c", printChar},
-			       {"s", printString}, {"d", printIntenger},
-			       {"i", printIntenger}, {NULL, NULL}}; /*formats*/
+	formats formatos[7] = {{"%", printPercentage}, {"c", printChar},
+{"s", printString}, {"d", printIntenger}, {"i", printIntenger},
+{"b", printBinary}, {NULL, NULL}}; /*formats*/
 
 	sub_string = malloc(sizeof(char) * buffer_size);
 	if (sub_string == NULL)
