@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 	unsigned int string_length = 0;
 	formats formatos[6] = {{"%", printPercentage}, {"c", printChar},
 			       {"s", printString}, {"d", printIntenger},
-			       {"i", printIntenger}, {NULL, NULL}};
+			       {"i", printIntenger}, {NULL, NULL}}; /*formats*/
 
 	sub_string = malloc(sizeof(char) * buffer_size);
 	if (sub_string == NULL)
