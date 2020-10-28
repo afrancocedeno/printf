@@ -86,6 +86,7 @@ char *printPercentage(va_list __attribute__((unused)) pa, char *sub_string)
 	sub_string[0] = '%';
 	return (sub_string);
 }
+
 /**
  * printBinary - pull int from argmument
  * @pa: variadic function argument
