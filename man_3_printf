@@ -28,8 +28,9 @@ The int argument is converted to signed decimal notation.  The precision, if any
 .B c
 The  int  argu ment  is  converted to an unsigned char, and the resulting character is written.
 
-.PP s
-.B The  const char *  argument is expected to be a pointer to an array of character type (pointer to  a string).   Characters  from  the  array  are written up to (but not including)  a  terminating  null  byte ('\0')
+.PP
+.B s
+The  const char *  argument is expected to be a pointer to an array of character type (pointer to  a string).   Characters  from  the  array  are written up to (but not including)  a  terminating  null  byte ('\0')
 
 .SH SEE ALSO
 printf(3)
@@ -43,4 +44,4 @@ Report _printf bugs to andres.aristizabal@gmail.com or afrancocedeno@gmail.com
 
 .SH AUTHOR
 .PP
- Written by Carlos Andrés Aristizabal and Alejandro Franco Cedeño
+Written by Carlos Andrés Aristizabal and Alejandro Franco Cedeño
