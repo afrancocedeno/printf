@@ -104,8 +104,6 @@ char *printBinary(va_list pa, char *sub_string)
 		n = n / 2;
 	}
 	for (i = i - 1, j = 0; i >= 0; i--, j++)
-	{
 		sub_string[j] = a[i] + '0';
-	}
 	return (sub_string);
 }
