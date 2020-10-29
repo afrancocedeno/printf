@@ -3,108 +3,138 @@
 /**
  * printChar - pull char from argmument
  * @pa: variadic function argument
- * @sub_string: return buffer
+ * @string: return buffer
  *
  * Return: new string of char
  */
-char *printChar(va_list pa, char *sub_string)
+char *printChar(va_list pa, char *string)
 {
 	char c_char;
 	int c_num = va_arg(pa, int);
 
+	if (c_num == 0)
+	{
+		c_char = c_num;
+		string = buffer(c_char, string);
+		return (string);
+	}
+
 	if (c_num < 0 || c_num > 127)
 		exit(5);
 	c_char = c_num;
-	sub_string[0] = c_char;
-	return (sub_string);
+	string = buffer(c_char, string);
+	return (string);
 }
-
 /**
  * printString - pull string from argmument
  * @pa: variadic function argument
- * @sub_string: return buffer
+ * @string: return buffer
  *
  * Return: new string
  */
-char *printString(va_list pa, char *sub_string)
+char *printString(va_list pa, char *string)
 {
-	char *string = va_arg(pa, char *);
+	char *arg_string = va_arg(pa, char *);
+	char *null_string = "(null)";
 	int i = 0;
 
-	if (string == NULL)
+	if (arg_string == NULL)
 	{
-		sub_string[0] = '(';
-		sub_string[1] = 'n';
-		sub_string[2] = 'u';
-		sub_string[3] = 'l';
-		sub_string[4] = 'l';
-		sub_string[5] = ')';
-		return (sub_string);
+		while (null_string[i])
+		{
+			string = buffer(null_string[i], string);
+			i++;
+		}
 	}
-	while (*(string + i))
+	else
 	{
-		sub_string[i] = string[i];
-		i++;
+		i = 0;
+		while (*(arg_string + i))
+		{
+			string = buffer(arg_string[i], string);
+			i++;
+		}
 	}
-	return (sub_string);
-}
 
+	return (string);
+}
 /**
  * printIntenger - pull int from argmument
  * @pa: variadic function argument
- * @sub_string: return buffer
+ * @string: return buffer
  *
  * Return: new string of int
  */
-char *printIntenger(va_list pa, char *sub_string)
+char *printIntenger(va_list pa, char *string)
 {
 	long int num = va_arg(pa, int);
 	long int num_length = 0;
-	int signo = 0;
+	int signo = 0, i = 0;
+	char *sub_string = NULL;
 
 	if (num < 0)
 	{
 		signo = 1;
 		num = -num;
 		num_length = numberLength(num);
+		sub_string = malloc(sizeof(char) * num_length + 2);
 	}
 	else
+	{
 		num_length = numberLength(num);
-	sub_string = numberToString(sub_string, num, num_length, signo);
-	return (sub_string);
-}
+		sub_string = malloc(sizeof(char) * num_length + 1);
+	}
 
+	sub_string = numberToString(sub_string, num, num_length, signo);
+	if (signo == 1)
+		num_length += 1;
+	sub_string[num_length] = '\0';
+
+	while (sub_string[i])
+	{
+		string = buffer(sub_string[i], string);
+		i++;
+	}
+	free(sub_string);
+	return (string);
+}
 /**
  * printPercentage - return percentage
  * @pa: unused argmument
- * @sub_string: return buffer
+ * @string: return buffer
  *
  * Return: string percetage
  */
-char *printPercentage(va_list __attribute__((unused)) pa, char *sub_string)
+char *printPercentage(va_list __attribute__((unused)) pa, char *string)
 {
-	sub_string[0] = '%';
-	return (sub_string);
-}
+	string = buffer('%', string);
 
+	return (string);
+}
 /**
  * printBinary - pull int from argmument
  * @pa: variadic function argument
- * @sub_string: return buffer
+ * @string: return buffer
  *
  * Return: new string of binary
  */
-char *printBinary(va_list pa, char *sub_string)
+char *printBinary(va_list pa, char *string)
 {
-	int a[10], n, i, j;
+	int num, i;
+	int *binary = NULL;
+	int mem_binary = 1024;
 
-	n = va_arg(pa, int);
-	for (i = 0; n > 0; i++)
+	num = va_arg(pa, int);
+	binary = malloc(sizeof(int) * mem_binary);
+	for (i = 0; num > 0; i++)
 	{
-		a[i] = n % 2;
-		n = n / 2;
+		binary[i] = num % 2;
+		num = num / 2;
 	}
-	for (i = i - 1, j = 0; i >= 0; i--, j++)
-		sub_string[j] = a[i] + '0';
-	return (sub_string);
+	for (i = i - 1; i >= 0; i--)
+	{
+		string = buffer(binary[i] + '0', string);
+	}
+	free(binary);
+	return (string);
 }

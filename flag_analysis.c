@@ -5,12 +5,12 @@
  * @directive_string: code of format
  * @formatos: all the code formats
  * @pa: list of arguments
- * @sub_string: return buffer
+ * @string: return buffer
  *
  * Return: string percetage
  */
-char *analyse_code(char directive_string, formats *formatos,
-		   va_list pa, char *sub_string)
+char *analyse_code(char directive_string, formats *formatos, va_list pa,
+		   char *string)
 {
 	int i = 0;
 
@@ -18,12 +18,12 @@ char *analyse_code(char directive_string, formats *formatos,
 	{
 		if (directive_string == formatos[i].format_specifier[0])
 		{
-			sub_string = formatos[i].get_substring(pa, sub_string);
-			return (sub_string);
+			string = formatos[i].get_substring(pa, string);
+			return (string);
 		}
 		i++;
 	}
-	sub_string[0] = '%';
-	sub_string[1] = directive_string;
-	return (sub_string);
+	string = buffer('%', string);
+	string = buffer(directive_string, string);
+	return (string);
 }

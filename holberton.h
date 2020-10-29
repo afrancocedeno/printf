@@ -24,13 +24,13 @@ unsigned int get_string_length(char *str);
 char *numberToString(char *s, long int n, long int length, int signo);
 long int numberLength(long int n);
 char *buffer(char c, char *string);
-char *sub_string_buffer(char *sub_string, char *string);
-char *reset_sub_buffer(char *sub_string, unsigned int buffer_size);
-char *printChar(va_list pa, char *sub_string);
-char *printString(va_list pa, char *sub_string);
-char *printIntenger(va_list pa, char *sub_string);
-char *printPercentage(va_list __attribute__((unused)) pa, char *sub_string);
-char *analyse_code(char directive_string, formats *formatos, va_list pa, char *sub_string);
+char *printChar(va_list pa, char *string);
+char *printString(va_list pa, char *string);
+char *printIntenger(va_list pa, char *string);
+char *printPercentage(va_list __attribute__((unused)) pa, char *string);
+char *printBinary(va_list pa, char *string);
+char *analyse_code(char directive_string, formats *formatos,
+		   va_list pa, char *string);
 unsigned int print(char *str);
-char *printBinary(va_list pa, char *sub_string);
+formats *init_structure(void);
 #endif
