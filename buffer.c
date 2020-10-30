@@ -1,5 +1,8 @@
 #include "holberton.h"
 
+/*-----TAKE TO BUFFER.c*/
+
+/*-----TAKE TO BUFFER.c*/
 /**
  * buffer - push char and return new string
  * @c: char to push
@@ -14,6 +17,7 @@ char *buffer(char c, char *string)
 	unsigned int i = 0;
 
 	string_length = get_string_length(string);
+
 	/*allocate memory for new char + null character*/
 	new_str = malloc(sizeof(char) * (string_length + 2));
 	if (new_str == NULL)
