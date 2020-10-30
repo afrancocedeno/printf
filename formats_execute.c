@@ -125,6 +125,8 @@ char *printBinary(va_list pa, char *string)
 	int mem_binary = 1024;
 
 	num = va_arg(pa, int);
+	if (num < 0)
+		num = -num;
 	binary = malloc(sizeof(int) * mem_binary);
 	for (i = 0; num > 0; i++)
 	{
