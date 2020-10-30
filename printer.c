@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 	/*initial checks*/
 	if (format == NULL || format[0] == '\0' ||
 	    (format[0] == '%' && format[1] == '\0'))
-		return (-1);
+		return (0);
 	va_start(pa, format); /*fill list of parameters*/
 	formatos = init_structure();
 	i = 0;
