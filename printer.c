@@ -51,7 +51,7 @@ int _printf(const char *format, ...)
 	}
 
 	string_length = print(string);
-	if (string[1] == '\0')
+	if (string[0] == '\0' && string[1] == '\0')
 		string_length += 1;
 	/*kill them all*/
 	va_end(pa);
