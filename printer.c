@@ -55,7 +55,7 @@ int _printf(const char *format, ...)
 		string_length += 1;
 	/*kill them all*/
 	va_end(pa);
-	if (string[0] != '\0')
+	if (string != NULL)
 		free(string);
 	free(formatos);
 	return (string_length);
